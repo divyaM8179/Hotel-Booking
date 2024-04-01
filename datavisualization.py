@@ -20,11 +20,19 @@ def data_vis():
     df=data_analysis()
 
 
-    column_name = 'type_of_meal_plan'
-    column_values = df[column_name].value_counts()
-    plt.pie(column_values, labels=column_values.index, autopct='%1.1f%%')
-    plt.title(f'Distribution of {column_name}')
-    plt.savefig('pie_chart.jpg')
+    top_products = df['type_of_meal_plan'].value_counts().head(10).index.tolist()
+    filtered_df = df[df['type_of_meal_plan'].isin(top_products)]
+
+    product_counts = filtered_df['type_of_meal_plan'].value_counts()
+
+    fig = go.Figure(data=[go.Pie(labels=product_counts.index, values=product_counts.values)])
+    
+    fig.update_layout(
+        template='plotly_dark',
+        title='Top 10 Products by Occurrences in Transactions'
+    )
+
+    fig.write_image("pie_chart.jpg")  
 
 
     dist_df = df['type_of_meal_plan'].value_counts().rename_axis('type_of_meal_plan').reset_index(name='count')
