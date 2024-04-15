@@ -5,7 +5,7 @@ import plotly.express as px
 import warnings
 warnings.filterwarnings("ignore")
 import numpy as np
-	@@ -12,72 +14,63 @@
+import plotly.figure_factory as ff
 import plotly.graph_objects as go
 import io
 from PIL import Image
