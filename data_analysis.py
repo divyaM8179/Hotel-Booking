@@ -1,4 +1,4 @@
-from data_loading import data_load
+from data_extraction import data_load
 
 def data_analysis():
     data = data_load()
