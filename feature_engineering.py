@@ -9,7 +9,7 @@ def feat_eng():
 
     print("values--------------", data['booking_status'].value_counts())
 
-    data.to_csv("hotel_reservations.csv", index=False)
+    data.to_csv("cleaned_data.csv", index=False)
 
     return data
 
